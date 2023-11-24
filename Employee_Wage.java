@@ -83,25 +83,37 @@ public class Employee_Wage {
         int monthly_wage=0;
         int no_of_days_present=0;
         int no_of_days_absent=0;
-        for(int i=0;i<Company.getWorking_day_per_month();i++){
+        int no_of_hours_worked=0;
+        while (no_of_days_present<=Company.getWorking_day_per_month() && no_of_hours_worked<=100){
             int presentOrabsent=generate_random();
             if( presentOrabsent==0){
                 no_of_days_absent++;
             }
             else{
                 no_of_days_present++;
+               if(presentOrabsent==1){
+                   no_of_hours_worked+=Company.getFull_day_hour();
+               }
+               else{
+                   no_of_hours_worked+=Company.getPart_time_hour();
+               }
             }
+
+
 
 
             int Daily_wage=calculateDaily_Wage(presentOrabsent,company1);
             monthly_wage+=Daily_wage;
 
+
         }
         System.out.println(monthly_wage);
         System.out.println("Absent:"+no_of_days_absent+" "+"present:"+no_of_days_present);
+        System.out.println(no_of_hours_worked);
 
 
     }
 
 }
+
 
