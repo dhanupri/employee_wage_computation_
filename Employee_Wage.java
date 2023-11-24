@@ -1,4 +1,7 @@
 package Employee_1;
+
+import java.util.ArrayList;
+
 class Company{
     private static  int wage_per_hour ;
     private static int full_day_hour;
@@ -77,43 +80,47 @@ public class Employee_Wage {
     public static void main(String[] args){
         System.out.println("Welcome to Employee Wage Computation Program");
         Company company1=new Company(20,8,4,20);
+        Company company2=new Company(25,7,3,25);
+        ArrayList<Company> companies=new ArrayList<>();
+        companies.add(company1);
+        companies.add(company2);
+        int n=1;
+        for(Company company:companies) {
+            System.out.println("company"+n);
+            n++;
 
 
+            int monthly_wage = 0;
+            int no_of_days_present = 0;
+            int no_of_days_absent = 0;
+            int no_of_hours_worked = 0;
+            while (no_of_days_present <= 20 && no_of_hours_worked <= 100) {
+                int presentOrabsent = generate_random();
+                if (presentOrabsent == 0) {
+                    no_of_days_absent++;
+                } else {
+                    no_of_days_present++;
+                    if (presentOrabsent == 1) {
+                        no_of_hours_worked += company.getFull_day_hour();
+                    } else {
+                        no_of_hours_worked += company.getPart_time_hour();
+                    }
+                }
 
-        int monthly_wage=0;
-        int no_of_days_present=0;
-        int no_of_days_absent=0;
-        int no_of_hours_worked=0;
-        while (no_of_days_present<=Company.getWorking_day_per_month() && no_of_hours_worked<=100){
-            int presentOrabsent=generate_random();
-            if( presentOrabsent==0){
-                no_of_days_absent++;
+                int Daily_wage = calculateDaily_Wage(presentOrabsent, company);
+                monthly_wage += Daily_wage;
+
+
             }
-            else{
-                no_of_days_present++;
-               if(presentOrabsent==1){
-                   no_of_hours_worked+=Company.getFull_day_hour();
-               }
-               else{
-                   no_of_hours_worked+=Company.getPart_time_hour();
-               }
-            }
-
-
-
-
-            int Daily_wage=calculateDaily_Wage(presentOrabsent,company1);
-            monthly_wage+=Daily_wage;
-
-
+            System.out.println("monthly_wage:"+monthly_wage);
+            System.out.println("Absent:" + no_of_days_absent + " " + "present:" + no_of_days_present);
+            System.out.println("no_of_hours_worked"+no_of_hours_worked);
         }
-        System.out.println(monthly_wage);
-        System.out.println("Absent:"+no_of_days_absent+" "+"present:"+no_of_days_present);
-        System.out.println(no_of_hours_worked);
 
 
     }
 
 }
+
 
 
