@@ -3,12 +3,14 @@ class Company{
     private static  int wage_per_hour ;
     private static int full_day_hour;
     private static int part_time_hour;
+    private static int working_day_per_month;
 
 
-    Company(int wage_per_hour,int full_day_hour,int part_time_hour){
+    Company(int wage_per_hour,int full_day_hour,int part_time_hour,int working_day_per_month){
         this.wage_per_hour=wage_per_hour;
         this.full_day_hour=full_day_hour;
         this.part_time_hour=part_time_hour;
+        this.working_day_per_month=working_day_per_month;
 
 
     }
@@ -37,6 +39,14 @@ class Company{
     public static void setPart_time_hour(int part_time_hour) {
         Company.part_time_hour = part_time_hour;
     }
+
+    public static int getWorking_day_per_month() {
+        return working_day_per_month;
+    }
+
+    public static void setWorking_day_per_month(int working_day_per_month) {
+        Company.working_day_per_month = working_day_per_month;
+    }
 }
 
 public class Employee_Wage {
@@ -53,7 +63,7 @@ public class Employee_Wage {
 
            case 2:
                return Company.getPart_time_hour()*Company.getWage_per_hour();
-               
+
            default:
                return 0;
 
@@ -66,17 +76,29 @@ public class Employee_Wage {
 
     public static void main(String[] args){
         System.out.println("Welcome to Employee Wage Computation Program");
-        int presentOrabsent=generate_random();
-        if( presentOrabsent==0){
-            System.out.println("Absent");
-        }
-        else{
-            System.out.println("present");
-        }
+        Company company1=new Company(20,8,4,20);
 
-        Company company1=new Company(20,8,4);
-        int Daily_wage=calculateDaily_Wage(presentOrabsent,company1);
-        System.out.println(Daily_wage);
+
+
+        int monthly_wage=0;
+        int no_of_days_present=0;
+        int no_of_days_absent=0;
+        for(int i=0;i<Company.getWorking_day_per_month();i++){
+            int presentOrabsent=generate_random();
+            if( presentOrabsent==0){
+                no_of_days_absent++;
+            }
+            else{
+                no_of_days_present++;
+            }
+
+
+            int Daily_wage=calculateDaily_Wage(presentOrabsent,company1);
+            monthly_wage+=Daily_wage;
+
+        }
+        System.out.println(monthly_wage);
+        System.out.println("Absent:"+no_of_days_absent+" "+"present:"+no_of_days_present);
 
 
     }
