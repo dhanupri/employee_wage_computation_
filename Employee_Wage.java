@@ -47,16 +47,18 @@ public class Employee_Wage {
 
     }
     public static int calculateDaily_Wage(int presentOrAbsent,Company company){
-        if(presentOrAbsent==1) {
-            return  Company.getWage_per_hour() * Company.getFull_day_hour();
-        }
-        else if(presentOrAbsent==2){
-            return  Company.getWage_per_hour() * Company.getPart_time_hour();
+       switch (presentOrAbsent){
+           case 1:
+               return Company.getFull_day_hour()*Company.getWage_per_hour();
 
-        }
-        else{
-            return 0;
-        }
+           case 2:
+               return Company.getPart_time_hour()*Company.getWage_per_hour();
+               
+           default:
+               return 0;
+
+
+       }
 
 
 
@@ -80,5 +82,4 @@ public class Employee_Wage {
     }
 
 }
-
 
