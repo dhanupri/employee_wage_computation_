@@ -3,10 +3,11 @@ package Employee_1;
 import java.util.ArrayList;
 
 class Company{
-    private static  int wage_per_hour ;
-    private static int full_day_hour;
-    private static int part_time_hour;
-    private static int working_day_per_month;
+    private  int wage_per_hour ;
+    private  int full_day_hour;
+    private  int part_time_hour;
+    private  int working_day_per_month;
+    private int total_wage1;
 
 
     Company(int wage_per_hour,int full_day_hour,int part_time_hour,int working_day_per_month){
@@ -14,41 +15,50 @@ class Company{
         this.full_day_hour=full_day_hour;
         this.part_time_hour=part_time_hour;
         this.working_day_per_month=working_day_per_month;
+	this.total_wage1=0;
+	
 
 
     }
 
 
-    public static int getWage_per_hour() {
+    public  int getWage_per_hour() {
         return wage_per_hour;
     }
 
-    public static void setWage_per_hour(int wage_per_hour) {
-        Company.wage_per_hour = wage_per_hour;
+    public  void setWage_per_hour(int wage_per_hour) {
+        this.wage_per_hour = wage_per_hour;
     }
 
-    public static int getFull_day_hour() {
+    public  int getFull_day_hour() {
         return full_day_hour;
     }
 
-    public static void setFull_day_hour(int full_day_hour) {
-        Company.full_day_hour = full_day_hour;
+    public  void setFull_day_hour(int full_day_hour) {
+        this.full_day_hour = full_day_hour;
     }
 
-    public static int getPart_time_hour() {
+    public  int getPart_time_hour() {
         return part_time_hour;
     }
 
-    public static void setPart_time_hour(int part_time_hour) {
-        Company.part_time_hour = part_time_hour;
+    public void setPart_time_hour(int part_time_hour) {
+        this.part_time_hour = part_time_hour;
     }
 
-    public static int getWorking_day_per_month() {
+    public int getWorking_day_per_month() {
         return working_day_per_month;
     }
 
-    public static void setWorking_day_per_month(int working_day_per_month) {
-        Company.working_day_per_month = working_day_per_month;
+    public  void setWorking_day_per_month(int working_day_per_month) {
+        this.working_day_per_month = working_day_per_month;
+    }
+    public  int getTotal_wage1() {
+        return total_wage;
+    }
+
+    public void setTotal_wage1(int total_wage) {
+        this.total_wage = total_wage;
     }
 }
 
@@ -113,6 +123,9 @@ public class Employee_Wage {
 
             }
             System.out.println("monthly_wage:"+monthly_wage);
+	    c.setTotal_wage1(c.getTotal_wage1()+monthly_wage);
+            System.out.println("Total wage:"+c.getTotal_wage1());
+
             System.out.println("Absent:" + no_of_days_absent + " " + "present:" + no_of_days_present);
             System.out.println("no_of_hours_worked"+no_of_hours_worked);
         }
