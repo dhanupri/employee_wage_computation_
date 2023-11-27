@@ -1,5 +1,9 @@
 package Employee_1;
 
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 interface CompanyEmpWage{
     public  int generate_random();
 
@@ -195,11 +199,18 @@ public class Employee_Wage implements CompanyEmpWage{
 
         Employee_Wage Emp_wage=new Employee_Wage();
 
+        System.out.println("Enter the Name of company :");
+        String name=sc.nextLine();
+        Company name1=Store_company.search(name);
 
-       for (Company c:Store_company.companies){
-           Emp_wage.multiple_companyWage(c);
 
-        }
+
+
+
+        Emp_wage.multiple_companyWage(name1);
+
+
+
 
 
     }
@@ -214,7 +225,18 @@ class Store_company{
 
     }
 
+    public static Company search(String name){
+        for (Company c:companies){
 
+            if(c.getName().equals(name)){
+
+               return c;
+
+
+            }
+        }
+        return null;
+    }
 
 
 
