@@ -1,6 +1,18 @@
 package Employee_1;
 
+interface CompanyEmpWage{
+    public  int generate_random();
 
+
+    public int calculateDaily_Wage(int presentOrAbsent, Company company);
+
+    public void  multiple_companyWage(Company c);
+
+
+
+
+
+}
 
 class Company {
     private static int total_wage;
@@ -81,7 +93,7 @@ class Company {
 
 }
 
-public class Employee_Wage{
+public class Employee_Wage implements CompanyEmpWage{
     /*
     Employee is
     Present or Absent
